@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EnglishPro Academy – Anglais Professionnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0F1F3D;--navy2:#162847;--navydark:#091628;
+  --gold:#F5A623;--goldl:#FBBF45;
+  --white:#F8F9FC;--green:#2ECC71;--gray:#8A95A8;
+  --wave:#1ABCFE;--orange:#FF6B00;
+  --bd:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+/* BG LETTERS */
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.lt{position:absolute;font-family:'Playfair Display',serif;color:rgba(245,166,35,0.05);animation:fl linear infinite;user-select:none;}
+@keyframes fl{0%{transform:translateY(110vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-15vh) rotate(20deg);opacity:0;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(15,31,61,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;}
+.logo span{color:var(--gold);}
+.navl{display:flex;align-items:center;gap:2rem;}
+.navl a{color:rgba(248,249,252,0.7);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color .2s;}
+.navl a:hover{color:var(--white);}
+.btn-nav{background:var(--gold)!important;color:var(--navy)!important;padding:.55rem 1.3rem;border-radius:6px;font-weight:600!important;}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;padding:8rem 5% 5rem;}
+.hero-in{max-width:680px;}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.3);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;font-weight:600;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.8rem;}
+.badge::before{content:'●';font-size:.5rem;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.5rem;}
+h1 em{font-style:normal;color:var(--gold);position:relative;}
+h1 em::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:3px;background:var(--gold);border-radius:2px;opacity:.4;}
+.hero-sub{font-size:1.1rem;color:rgba(248,249,252,.68);line-height:1.7;max-width:520px;margin-bottom:2.5rem;}
+.ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+.btn-p{background:var(--gold);color:var(--navy);padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(245,166,35,.3);}
+.btn-p:hover{background:var(--goldl);transform:translateY(-2px);}
+.btn-s{color:var(--white);font-weight:600;font-size:.95rem;text-decoration:none;display:flex;align-items:center;gap:.5rem;opacity:.8;transition:opacity .2s;}
+.btn-s:hover{opacity:1;}
+.btn-s::before{content:'▶';font-size:.6rem;}
+.stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--bd);}
+.sv{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;}
+.sv span{color:var(--gold);}
+.sl{font-size:.78rem;color:var(--gray);margin-top:.1rem;font-weight:500;}
+
+/* TEACHERS */
+.tstrip{position:relative;z-index:1;background:rgba(255,255,255,.03);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:3rem 5%;text-align:center;}
+.tstrip>p{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:2rem;font-weight:600;}
+.trow{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.tc{display:flex;align-items:center;gap:.85rem;background:rgba(255,255,255,.05);border:1px solid var(--bd);border-radius:12px;padding:.9rem 1.3rem;}
+.tav{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e07b10);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.tn{font-weight:600;font-size:.9rem;}
+.ts{font-size:.75rem;color:var(--gray);margin-top:.15rem;}
+.ton{width:8px;height:8px;border-radius:50%;background:var(--green);margin-left:auto;box-shadow:0 0 0 2px rgba(46,204,113,.25);}
+
+/* LEVELS */
+.lsec{position:relative;z-index:1;padding:6rem 5%;}
+.slabel{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:700;margin-bottom:.8rem;}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;line-height:1.15;}
+.ssub{color:var(--gray);font-size:1rem;max-width:520px;line-height:1.65;margin-bottom:3rem;}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;}
+.lcard{background:var(--navy2);border:1px solid var(--bd);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;transition:all .2s;cursor:pointer;}
+.lcard:hover{transform:translateY(-4px);border-color:rgba(245,166,35,.35);box-shadow:0 12px 40px rgba(0,0,0,.25);}
+.lcard.pop{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);}
+.popbadge{position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:700;padding:.25rem .7rem;border-radius:50px;text-transform:uppercase;}
+.lcode{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--gold);margin-bottom:.3rem;line-height:1;}
+.lname{font-weight:700;font-size:1rem;margin-bottom:.5rem;}
+.ldesc{font-size:.82rem;color:var(--gray);line-height:1.55;margin-bottom:1.2rem;}
+.lprice{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;}
+.lprice sub{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;color:var(--gray);vertical-align:middle;}
+.linc{margin-top:1rem;display:flex;flex-direction:column;gap:.4rem;}
+.linc li{list-style:none;font-size:.8rem;color:rgba(248,249,252,.7);display:flex;align-items:center;gap:.5rem;}
+.linc li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+.lcta{display:block;margin-top:1.5rem;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.3);color:var(--gold);text-align:center;padding:.65rem;border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none;transition:all .2s;cursor:pointer;}
+.lcard.pop .lcta{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.lcta:hover{background:var(--gold);color:var(--navy);}
+
+/* HOW */
+.how{position:relative;z-index:1;padding:5rem 5%;background:rgba(255,255,255,.02);border-top:1px solid var(--bd);}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:3rem;}
+.step{display:flex;flex-direction:column;gap:.8rem;}
+.sico{width:52px;height:52px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.step h3{font-weight:700;font-size:1rem;}
+.step p{font-size:.85rem;color:var(--gray);line-height:1.6;}
+
+/* CERT */
+.csec{position:relative;z-index:1;padding:5rem 5%;display:flex;align-items:center;gap:4rem;flex-wrap:wrap;}
+.ctxt{flex:1;min-width:280px;}
+.cvis{flex:1;min-width:280px;max-width:460px;background:linear-gradient(135deg,#1a3060,#0f1f3d);border:2px solid var(--gold);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;}
+.cvis::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(245,166,35,.03) 20px,rgba(245,166,35,.03) 40px);}
+.clogo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--gold);margin-bottom:1.5rem;position:relative;}
+.ctitle2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem;position:relative;}
+.cname{font-size:1.1rem;color:var(--gold);font-style:italic;margin-bottom:.5rem;position:relative;}
+.clvl{font-size:.85rem;color:var(--gray);position:relative;}
+.cseal{position:absolute;bottom:1.5rem;right:1.5rem;width:64px;height:64px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:rgba(0,0,0,.3);border-top:1px solid var(--bd);padding:2rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--gray);}
+.fl{display:flex;gap:1.5rem;}
+.fl a{font-size:.8rem;color:var(--gray);text-decoration:none;}
+.fl a:hover{color:var(--white);}
+
+/* ════════════════════════════
+   MODAL
+════════════════════════════ */
+.ov{position:fixed;inset:0;background:rgba(5,12,25,.88);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.ov.open{opacity:1;pointer-events:all;}
+.modal{background:#152035;border:1px solid rgba(245,166,35,.2);border-radius:20px;padding:2.5rem;width:100%;max-width:500px;transform:translateY(20px) scale(.97);transition:transform .25s;max-height:90vh;overflow-y:auto;position:relative;}
+.ov.open .modal{transform:translateY(0) scale(1);}
+.mcl{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--gray);font-size:1.3rem;cursor:pointer;}
+.mcl:hover{color:var(--white);}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:.4rem;}
+.msub{font-size:.88rem;color:var(--gray);margin-bottom:1.5rem;}
+.dots{display:flex;gap:.5rem;margin-bottom:1.8rem;}
+.dot{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.1);transition:background .3s;}
+.dot.on{background:var(--gold);}
+.fg{margin-bottom:1.1rem;}
+.fg label{display:block;font-size:.8rem;font-weight:600;color:rgba(248,249,252,.7);margin-bottom:.4rem;letter-spacing:.03em;}
+.fg input,.fg select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.75rem 1rem;color:var(--white);font-size:.9rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input::placeholder{color:rgba(255,255,255,.3);}
+.fg input:focus,.fg select:focus{border-color:var(--gold);}
+.fg select option{background:#152035;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.lpick-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.45rem;}
+.lpick{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.8rem;cursor:pointer;transition:all .2s;text-align:center;}
+.lpick:hover{border-color:rgba(245,166,35,.4);}
+.lpick.sel{border-color:var(--gold);background:rgba(245,166,35,.1);}
+.lpc{font-weight:700;font-size:1rem;color:var(--gold);}
+.lpn{font-size:.72rem;color:var(--gray);margin-top:.15rem;}
+.lpp{font-size:.75rem;color:var(--white);margin-top:.3rem;font-weight:600;}
+.bsub{width:100%;background:var(--gold);color:var(--navy);border:none;padding:.9rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;margin-top:1.2rem;transition:all .2s;font-family:'Inter',sans-serif;}
+.bsub:hover{background:var(--goldl);transform:translateY(-1px);}
+.bback{width:100%;background:none;border:none;color:var(--gray);margin-top:.5rem;cursor:pointer;font-size:.85rem;font-family:'Inter',sans-serif;padding:.5rem;}
+.fnotice{font-size:.75rem;color:var(--gray);text-align:center;margin-top:1rem;line-height:1.5;}
+
+/* ════════════════════════════
+   STEP 3 — PAIEMENT V2
+════════════════════════════ */
+.pay-header{text-align:center;margin-bottom:1.2rem;}
+.pay-header h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:.3rem;}
+.pay-header p{font-size:.82rem;color:var(--gray);}
+
+/* Résumé */
+.osum{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:1rem;margin-bottom:1.2rem;font-size:.85rem;}
+.osr{display:flex;justify-content:space-between;align-items:center;padding:.25rem 0;}
+.osr+.osr{border-top:1px solid rgba(255,255,255,.05);}
+.ost{display:flex;justify-content:space-between;align-items:center;padding-top:.6rem;border-top:1px solid rgba(245,166,35,.25);margin-top:.4rem;font-weight:700;font-size:.95rem;}
+
+/* Sélection opérateur */
+.op-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem;}
+.opcard{border:2px solid rgba(255,255,255,.1);border-radius:14px;padding:1.2rem .8rem;cursor:pointer;transition:all .22s;text-align:center;position:relative;}
+.opcard:hover{transform:translateY(-2px);}
+.opcheck{position:absolute;top:.5rem;right:.5rem;width:20px;height:20px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;}
+.opcard.selwave{border-color:var(--wave);box-shadow:0 0 0 1px var(--wave),0 6px 20px rgba(26,188,254,.12);}
+.opcard.selorange{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange),0 6px 20px rgba(255,107,0,.12);}
+.opcard.selwave .opcheck{display:flex;background:var(--wave);}
+.opcard.selorange .opcheck{display:flex;background:var(--orange);}
+.opicon{width:52px;height:52px;border-radius:14px;margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.opicon-w{background:linear-gradient(135deg,#0fb8f0,#0d8bbf);}
+.opicon-o{background:linear-gradient(135deg,#FF8C00,#e55a00);}
+.opname{font-weight:700;font-size:1rem;margin-bottom:.15rem;}
+.opname-w{color:var(--wave);}
+.opname-o{color:var(--orange);}
+.opsub{font-size:.7rem;color:var(--gray);}
+.opspeed{display:inline-block;margin-top:.35rem;font-size:.65rem;font-weight:600;padding:.15rem .5rem;border-radius:50px;}
+.opspeed-w{background:rgba(26,188,254,.12);color:var(--wave);}
+.opspeed-o{background:rgba(255,107,0,.12);color:var(--orange);}
+
+/* Zone instructions dynamique */
+.pay-instr{display:none;animation:fadeIn .3s ease;}
+.pay-instr.show{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* Bouton ouvrir app */
+.btn-app{width:100%;padding:.8rem;border-radius:10px;border:none;font-weight:700;font-size:.9rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.6rem;}
+.btn-app-w{background:linear-gradient(135deg,#0fb8f0,#0d8bbf);color:#fff;}
+.btn-app-w:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.btn-app-o{background:linear-gradient(135deg,#FF8C00,#e55a00);color:#fff;}
+.btn-app-o:hover{filter:brightness(1.1);transform:translateY(-1px);}
+
+/* Séparateur ou */
+.orline{display:flex;align-items:center;gap:.7rem;margin:.7rem 0;font-size:.75rem;color:var(--gray);}
+.orline::before,.orline::after{content:'';flex:1;height:1px;background:var(--bd);}
+
+/* Numéro marchand */
+.mbox{border-radius:10px;padding:.9rem 1rem;text-align:center;margin:.5rem 0 .8rem;}
+.mbox-w{background:rgba(26,188,254,.07);border:1px solid rgba(26,188,254,.25);}
+.mbox-o{background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.25);}
+.mbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gray);margin-bottom:.3rem;}
+.mbn{font-size:1.5rem;font-weight:700;letter-spacing:.12em;margin-bottom:.2rem;}
+.mbn-w{color:var(--wave);}
+.mbn-o{color:var(--orange);}
+.mbcopy{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;cursor:pointer;border:none;background:rgba(255,255,255,.08);color:var(--white);border-radius:4px;padding:.2rem .6rem;font-family:'Inter',sans-serif;transition:background .2s;}
+.mbcopy:hover{background:rgba(255,255,255,.16);}
+.mbname{font-size:.7rem;color:var(--gray);margin-top:.3rem;}
+
+/* Étapes manuelles */
+.psteps{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin:.6rem 0;}
+.psteps li{font-size:.82rem;color:rgba(248,249,252,.85);display:flex;align-items:flex-start;gap:.6rem;line-height:1.5;}
+.psn{min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0;color:#fff;}
+.psn-w{background:var(--wave);}
+.psn-o{background:var(--orange);}
+
+/* Saisie référence */
+.refbox{margin-top:.9rem;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:10px;padding:.9rem;}
+.refbox-title{font-size:.8rem;font-weight:600;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem;}
+.refinput{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.7rem 1rem;color:var(--white);font-size:.92rem;font-family:'Inter',sans-serif;outline:none;letter-spacing:.05em;font-weight:600;margin-top:.4rem;}
+.refinput:focus{border-color:var(--gold);}
+.refinput::placeholder{font-weight:400;letter-spacing:0;font-size:.85rem;}
+
+/* Badge TP */
+.tpbadge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);border-radius:6px;padding:.3rem .7rem;font-size:.7rem;color:var(--gold);font-weight:600;margin-bottom:1rem;}
+
+/* Vérif */
+.verif{text-align:center;padding:2rem 0;}
+.vspinner{width:52px;height:52px;border:3px solid rgba(245,166,35,.15);border-top-color:var(--gold);border-radius:50%;animation:spin .85s linear infinite;margin:0 auto 1.2rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.vtitle{font-weight:700;font-size:1.05rem;margin-bottom:.5rem;}
+.vsub{font-size:.83rem;color:var(--gray);line-height:1.6;}
+
+/* Succès */
+.sscreen{text-align:center;padding:1rem 0;}
+.sico{width:72px;height:72px;background:rgba(46,204,113,.15);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem;}
+.sscreen h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.8rem;}
+.sscreen p{color:var(--gray);font-size:.9rem;line-height:1.6;}
+
+/* ════════════════════════════
+   ESPACE FORMATION
+════════════════════════════ */
+#app{display:none;position:fixed;inset:0;z-index:300;background:var(--navydark);flex-direction:column;}
+#app.on{display:flex;}
+.cnav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(15,31,61,.95);border-bottom:1px solid var(--bd);flex-shrink:0;}
+.cnav .logo{font-size:1.2rem;}
+.uinfo{display:flex;align-items:center;gap:.8rem;}
+.uav{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;font-size:.9rem;}
+.un{font-size:.85rem;font-weight:600;}
+.ul{font-size:.72rem;color:var(--gold);}
+.blog{background:none;border:1px solid var(--bd);color:var(--gray);padding:.35rem .8rem;border-radius:6px;cursor:pointer;font-size:.8rem;font-family:'Inter',sans-serif;}
+.blog:hover{color:var(--white);}
+.cbody{display:flex;flex:1;overflow:hidden;}
+.cside{width:260px;flex-shrink:0;background:rgba(255,255,255,.02);border-right:1px solid var(--bd);overflow-y:auto;padding:1.2rem;}
+.cstitle{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);font-weight:700;margin-bottom:.6rem;padding:0 .3rem;}
+.csi{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border-radius:8px;cursor:pointer;font-size:.85rem;transition:background .15s;color:rgba(248,249,252,.75);}
+.csi:hover{background:rgba(255,255,255,.05);}
+.csi.on{background:rgba(245,166,35,.12);color:var(--white);}
+.csico{font-size:1rem;width:20px;text-align:center;}
+.cslk{margin-left:auto;font-size:.7rem;color:var(--gray);}
+.pbar-wrap{margin:.5rem .3rem 1rem;}
+.pbar-lbl{font-size:.72rem;color:var(--gray);margin-bottom:.3rem;display:flex;justify-content:space-between;}
+.pbar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+.pfill{height:100%;background:var(--gold);border-radius:2px;transition:width .5s;}
+.cmain{flex:1;overflow-y:auto;padding:2rem;}
+.ctabs{display:flex;gap:.3rem;margin-bottom:1.8rem;background:rgba(255,255,255,.04);border-radius:10px;padding:.3rem;}
+.ctab{flex:1;padding:.55rem 1rem;border-radius:7px;border:none;background:none;color:rgba(248,249,252,.6);font-size:.85rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+.ctab.on{background:var(--gold);color:var(--navy);font-weight:700;}
+.lhdr{margin-bottom:1.5rem;}
+.lbadge{display:inline-block;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);color:var(--gold);font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:50px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem;}
+.ltitle{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:.4rem;}
+.lmeta{font-size:.8rem;color:var(--gray);display:flex;gap:1rem;flex-wrap:wrap;}
+.lcont{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem;}
+.lcont h3{font-size:1rem;font-weight:700;margin-bottom:.7rem;color:var(--gold);}
+.lcont p{font-size:.88rem;line-height:1.7;color:rgba(248,249,252,.85);margin-bottom:.8rem;}
+.lcont p:last-child{margin-bottom:0;}
+.exbox{background:rgba(245,166,35,.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin:.8rem 0;font-size:.85rem;}
+.exbox .en{font-weight:600;color:var(--white);}
+.exbox .fr{color:var(--gray);font-size:.8rem;margin-top:.2rem;}
+.qq{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:14px;padding:1.5rem;margin-bottom:1rem;}
+.qqt{font-weight:600;font-size:.95rem;margin-bottom:1rem;line-height:1.5;}
+.qopts{display:flex;flex-direction:column;gap:.5rem;}
+.qopt{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.7rem 1rem;cursor:pointer;font-size:.88rem;transition:all .2s;background:none;color:var(--white);font-family:'Inter',sans-serif;text-align:left;}
+.qopt:hover{border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.05);}
+.qopt.ok{border-color:var(--green);background:rgba(46,204,113,.1);color:var(--green);}
+.qopt.no{border-color:#e74c3c;background:rgba(231,76,60,.1);color:#e74c3c;}
+.chatbox{display:flex;flex-direction:column;height:calc(100vh - 220px);min-height:400px;}
+.msgs{flex:1;overflow-y:auto;padding:.5rem 0;display:flex;flex-direction:column;gap:1rem;}
+.msgs::-webkit-scrollbar{width:3px;}
+.msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);}
+.msg{display:flex;gap:.7rem;max-width:85%;}
+.msg.me{align-self:flex-end;flex-direction:row-reverse;}
+.mav{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.mav.p{background:linear-gradient(135deg,var(--gold),#e07b10);}
+.mav.u{background:rgba(255,255,255,.1);}
+.mbub{background:rgba(255,255,255,.06);border:1px solid var(--bd);border-radius:14px;padding:.8rem 1rem;font-size:.88rem;line-height:1.6;}
+.msg.me .mbub{background:rgba(245,166,35,.12);border-color:rgba(245,166,35,.2);}
+.mname{font-size:.7rem;color:var(--gray);margin-bottom:.3rem;font-weight:600;}
+.cinput-wrap{display:flex;gap:.6rem;margin-top:1rem;align-items:flex-end;}
+.cinput{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.75rem 1rem;color:var(--white);font-size:.9rem;font-family:'Inter',sans-serif;outline:none;resize:none;min-height:46px;max-height:120px;}
+.cinput:focus{border-color:var(--gold);}
+.csend{background:var(--gold);color:var(--navy);border:none;width:42px;height:42px;border-radius:10px;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;}
+.csend:hover{background:var(--goldl);}
+.csend:disabled{opacity:.5;cursor:not-allowed;}
+.tdot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:tb 1.2s infinite;}
+.tdot:nth-child(2){animation-delay:.2s;}
+.tdot:nth-child(3){animation-delay:.4s;}
+@keyframes tb{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+@media(max-width:768px){
+  .cside{display:none;}.navl{display:none;}
+  .stats{flex-direction:column;gap:1.2rem;}
+  .frow{grid-template-columns:1fr;}
+  .csec{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">English<span>Pro</span> Academy</div>
+  <div class="navl">
+    <a href="#levels">Niveaux</a>
+    <a href="#how">Méthode</a>
+    <a href="#cert">Certificats</a>
+    <a href="#" class="btn-nav" onclick="openModal();return false;">S'inscrire</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="badge">Formation Professionnelle en Anglais</div>
+    <h1>L'<em>anglais</em><br/>des professionnels,<br/>par des experts</h1>
+    <p class="hero-sub">Cours 100% en ligne, adaptés à votre secteur. Paiement sécurisé Wave & Orange Money. Accès immédiat après paiement.</p>
+    <div class="ctas">
+      <a href="#" class="btn-p" onclick="openModal();return false;">Commencer ma formation</a>
+      <a href="#how" class="btn-s">Voir comment ça marche</a>
+    </div>
+    <div class="stats">
+      <div><div class="sv">12<span>k+</span></div><div class="sl">Professionnels formés</div></div>
+      <div><div class="sv">98<span>%</span></div><div class="sl">Taux de satisfaction</div></div>
+      <div><div class="sv">4</div><div class="sl">Niveaux certifiants</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<div class="tstrip">
+  <p>Votre équipe pédagogique – disponible maintenant</p>
+  <div class="trow">
+    <div class="tc"><div class="tav">👩‍🏫</div><div><div class="tn">Sarah Mitchell</div><div class="ts">Business English · A1/A2</div></div><div class="ton"></div></div>
+    <div class="tc"><div class="tav">👨‍🏫</div><div><div class="tn">James Carter</div><div class="ts">Oral & Présentations · B1/B2</div></div><div class="ton"></div></div>
+    <div class="tc"><div class="tav">👩‍💼</div><div><div class="tn">Emily Ross</div><div class="ts">Négociation · B2</div></div><div class="ton"></div></div>
+    <div class="tc"><div class="tav">👨‍💻</div><div><div class="tn">David Okonkwo</div><div class="ts">Réunions & Rapports</div></div><div class="ton"></div></div>
+  </div>
+</div>
+
+<!-- LEVELS -->
+<section class="lsec" id="levels">
+  <div class="slabel">Tarifs & Niveaux</div>
+  <h2 class="stitle">Choisissez votre niveau</h2>
+  <p class="ssub">Test de positionnement gratuit inclus. Accès immédiat après paiement Wave ou Orange Money.</p>
+  <div class="lgrid">
+    <div class="lcard"><div class="lcode">A1</div><div class="lname">Grand Débutant</div><div class="ldesc">Bases solides : vocabulaire pro, formules de politesse, premiers échanges.</div><div class="lprice">15 000 <sub>FCFA / formation</sub></div><ul class="linc"><li>Cours structurés + quiz</li><li>Chat avec votre prof</li><li>Exercices pro quotidiens</li><li>Certificat A1</li></ul><div class="lcta" onclick="openModal()">Choisir A1</div></div>
+    <div class="lcard"><div class="lcode">A2</div><div class="lname">Élémentaire</div><div class="ldesc">Emails simples, réunions courtes, CV en anglais, présentation à des partenaires.</div><div class="lprice">15 000 <sub>FCFA / formation</sub></div><ul class="linc"><li>Cours structurés + quiz</li><li>Chat avec votre prof</li><li>Rédaction d'emails pro</li><li>Certificat A2</li></ul><div class="lcta" onclick="openModal()">Choisir A2</div></div>
+    <div class="lcard pop"><div class="popbadge">Populaire</div><div class="lcode">B1</div><div class="lname">Intermédiaire</div><div class="ldesc">Réunions, présentations, négociations courantes. Gérer les situations pros en anglais.</div><div class="lprice">15 000 <sub>FCFA / formation</sub></div><ul class="linc"><li>Cours structurés + quiz</li><li>Chat illimité avec votre prof</li><li>Simulations de réunions</li><li>Certificat B1</li></ul><div class="lcta" onclick="openModal()">Choisir B1</div></div>
+    <div class="lcard"><div class="lcode">B2</div><div class="lname">Intermédiaire Supérieur</div><div class="ldesc">Rapports complexes, conférences, leadership et négociation avancée en anglais.</div><div class="lprice">15 000 <sub>FCFA / formation</sub></div><ul class="linc"><li>Cours avancés + débats</li><li>Chat illimité avec votre prof</li><li>Préparation TOEIC/Cambridge</li><li>Certificat B2</li></ul><div class="lcta" onclick="openModal()">Choisir B2</div></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how" id="how">
+  <div class="slabel">Méthode</div>
+  <h2 class="stitle">Comment ça marche ?</h2>
+  <div class="sgrid">
+    <div class="step"><div class="sico">📋</div><h3>Test de niveau</h3><p>Test rapide (10 min). Votre prof est assigné selon votre profil et secteur.</p></div>
+    <div class="step"><div class="sico">💳</div><h3>Paiement Wave/Orange</h3><p>Payez en 30 secondes. Ouvrez l'app ou suivez les instructions manuelles. Accès immédiat.</p></div>
+    <div class="step"><div class="sico">📚</div><h3>Cours structurés</h3><p>Leçons progressives avec contenus pros : emails, réunions, négociations, rapports.</p></div>
+    <div class="step"><div class="sico">✏️</div><h3>Exercices & Quiz</h3><p>Votre prof corrige et explique chaque erreur. Progression mesurée en temps réel.</p></div>
+    <div class="step"><div class="sico">💬</div><h3>Chat avec votre prof</h3><p>Posez toutes vos questions. Réponse garantie sous 2h, 7j/7.</p></div>
+    <div class="step"><div class="sico">🏆</div><h3>Certificat officiel</h3><p>Certificat EnglishPro Academy à la fin — idéal pour votre CV et LinkedIn.</p></div>
+  </div>
+</section>
+
+<!-- CERT -->
+<section class="csec" id="cert">
+  <div class="ctxt">
+    <div class="slabel">Certification</div>
+    <h2 class="stitle">Un certificat qui<br/>atteste votre niveau</h2>
+    <p class="ssub">Certificat numérique et imprimable reconnu par les employeurs et partenaires internationaux.</p>
+    <a href="#" class="btn-p" onclick="openModal();return false;" style="display:inline-block;margin-top:1rem;">Obtenir mon certificat</a>
+  </div>
+  <div class="cvis">
+    <div class="clogo">EnglishPro Academy</div>
+    <div style="font-size:.75rem;color:rgba(245,166,35,.6);margin-bottom:1rem;position:relative;letter-spacing:.05em;">CERTIFICAT D'ACCOMPLISSEMENT</div>
+    <div class="ctitle2">Ce certificat atteste que</div>
+    <div class="cname">Kouamé Jean-Baptiste</div>
+    <div class="clvl">a complété avec succès la formation niveau <strong style="color:var(--gold)">B1 – Intermédiaire</strong><br/>selon le référentiel CECRL.</div>
+    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);font-size:.72rem;color:var(--gray);position:relative;">Délivré le 17 Juin 2026 · EnglishPro Academy · Abidjan, Côte d'Ivoire</div>
+    <div class="cseal">🎓</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 EnglishPro Academy – Abidjan, Côte d'Ivoire</p>
+  <div class="fl"><a href="#">Conditions</a><a href="#">Confidentialité</a><a href="#">Contact</a></div>
+</footer>
+
+<!-- ════════════════════════════════
+     MODAL INSCRIPTION + PAIEMENT
+════════════════════════════════ -->
+<div class="ov" id="ov" onclick="ovClick(event)">
+  <div class="modal">
+    <button class="mcl" onclick="closeModal()">✕</button>
+
+    <!-- FORM -->
+    <div id="fscreen">
+
+      <!-- STEP 1 -->
+      <div id="s1">
+        <h2>Créer mon compte</h2>
+        <p class="msub">Inscription rapide — paiement Wave ou Orange Money</p>
+        <div class="dots"><div class="dot on" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div>
+        <div class="frow">
+          <div class="fg"><label>Prénom</label><input id="fn" type="text" placeholder="Kouamé"/></div>
+          <div class="fg"><label>Nom</label><input id="ln" type="text" placeholder="Dupont"/></div>
+        </div>
+        <div class="fg"><label>Email</label><input id="em" type="email" placeholder="kouame@exemple.com"/></div>
+        <div class="fg"><label>Téléphone</label><input id="ph" type="tel" placeholder="07 00 00 00 00"/></div>
+        <div class="fg"><label>Mot de passe</label><input id="pw" type="password" placeholder="Minimum 8 caractères"/></div>
+        <button class="bsub" onclick="go2()">Continuer →</button>
+        <p class="fnotice">Déjà un compte ? <a href="#" style="color:var(--gold)" onclick="showLogin()">Se connecter</a></p>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="s2" style="display:none">
+        <h2>Votre formation</h2>
+        <p class="msub">Choisissez votre niveau et votre secteur</p>
+        <div class="dots"><div class="dot on" id="d1b"></div><div class="dot on" id="d2b"></div><div class="dot" id="d3b"></div></div>
+        <div class="fg">
+          <label>Niveau souhaité</label>
+          <div class="lpick-grid">
+            <div class="lpick" onclick="pickLvl(this,'A1','Grand Débutant')"><div class="lpc">A1</div><div class="lpn">Grand Débutant</div><div class="lpp">15 000 FCFA</div></div>
+            <div class="lpick" onclick="pickLvl(this,'A2','Élémentaire')"><div class="lpc">A2</div><div class="lpn">Élémentaire</div><div class="lpp">15 000 FCFA</div></div>
+            <div class="lpick" onclick="pickLvl(this,'B1','Intermédiaire')"><div class="lpc">B1</div><div class="lpn">Intermédiaire</div><div class="lpp">15 000 FCFA</div></div>
+            <div class="lpick" onclick="pickLvl(this,'B2','Interm. Supérieur')"><div class="lpc">B2</div><div class="lpn">Interméd. Supérieur</div><div class="lpp">15 000 FCFA</div></div>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Secteur professionnel</label>
+          <select id="sec">
+            <option value="">Sélectionnez votre secteur</option>
+            <option value="banking">Finance & Banque</option>
+            <option value="health">Santé & Médical</option>
+            <option value="tech">Informatique & Tech</option>
+            <option value="trade">Commerce & Vente</option>
+            <option value="law">Droit & Juridique</option>
+            <option value="ngo">ONG & Organisations Int.</option>
+            <option value="education">Éducation & Formation</option>
+            <option value="other">Autre secteur</option>
+          </select>
+        </div>
+        <button class="bsub" onclick="go3()">Passer au paiement →</button>
+        <button class="bback" onclick="go1()">← Retour</button>
+      </div>
+
+      <!-- STEP 3 : PAIEMENT V2 -->
+      <div id="s3" style="display:none">
+        <div class="pay-header">
+          <h3>💳 Paiement sécurisé</h3>
+          <p>Choisissez votre opérateur mobile money</p>
+        </div>
+        <div class="tpbadge">🔒 Sécurisé par Touch Point CI</div>
+
+        <!-- Résumé -->
+        <div class="osum">
+          <div class="osr"><span style="color:var(--gray)">Formation</span><span id="osl" style="font-weight:600">—</span></div>
+          <div class="osr"><span style="color:var(--gray)">Secteur</span><span id="oss" style="color:var(--gray);font-size:.82rem">—</span></div>
+          <div class="ost"><span>Total à payer</span><strong style="color:var(--gold);font-size:1.1rem">15 000 FCFA</strong></div>
+        </div>
+
+        <!-- Choix opérateur -->
+        <div class="op-grid">
+          <div class="opcard" id="wcard" onclick="pickOp('wave')">
+            <div class="opcheck" id="wcheck">✓</div>
+            <div class="opicon opicon-w">🌊</div>
+            <div class="opname opname-w">Wave</div>
+            <div class="opsub">Mobile Money</div>
+            <div class="opspeed opspeed-w">⚡ Instantané</div>
+          </div>
+          <div class="opcard" id="ocard" onclick="pickOp('orange')">
+            <div class="opcheck" id="ocheck">✓</div>
+            <div class="opicon opicon-o">🟠</div>
+            <div class="opname opname-o">Orange Money</div>
+            <div class="opsub">Mobile Money</div>
+            <div class="opspeed opspeed-o">✅ Fiable</div>
+          </div>
+        </div>
+
+        <!-- Instructions Wave -->
+        <div class="pay-instr" id="instr-wave">
+          <!-- Bouton app direct -->
+          <button class="btn-app btn-app-w" onclick="openWaveApp()">
+            🌊 Payer avec l'app Wave →
+          </button>
+
+          <div class="orline">ou payer manuellement</div>
+
+          <!-- Numéro -->
+          <div class="mbox mbox-w">
+            <div class="mbl">Numéro du marchand</div>
+            <div class="mbn mbn-w">07 57 74 74 60</div>
+            <button class="mbcopy" onclick="copyNum()">📋 Copier</button>
+            <div class="mbname">EnglishPro Academy – Abidjan CI</div>
+          </div>
+
+          <!-- Étapes manuelles -->
+          <ul class="psteps">
+            <li><div class="psn psn-w">1</div><div>Ouvrez votre app <strong>Wave</strong></div></li>
+            <li><div class="psn psn-w">2</div><div>Appuyez sur <strong>"Envoyer de l'argent"</strong></div></li>
+            <li><div class="psn psn-w">3</div><div>Numéro : <strong>0757747460</strong> — Montant : <strong>15 000 FCFA</strong></div></li>
+            <li><div class="psn psn-w">4</div><div>Note : <strong id="wave-ref-note">EPA-[Prénom]-[Niveau]</strong></div></li>
+            <li><div class="psn psn-w">5</div><div>Validez et notez la <strong>référence SMS</strong> reçue</div></li>
+          </ul>
+
+          <!-- Saisie réf -->
+          <div class="refbox">
+            <div class="refbox-title">📲 Référence de transaction Wave</div>
+            <input class="refinput" id="ref-wave" type="text" placeholder="Ex : TXN-WAVE-XXXXXXXX" oninput="checkRef('wave')"/>
+          </div>
+          <button class="bsub" id="cfbtn-wave" onclick="confirm3()" style="display:none;margin-top:.8rem;">✓ Confirmer mon paiement Wave</button>
+        </div>
+
+        <!-- Instructions Orange -->
+        <div class="pay-instr" id="instr-orange">
+          <button class="btn-app btn-app-o" onclick="openOrangeApp()">
+            🟠 Payer avec Orange Money →
+          </button>
+
+          <div class="orline">ou payer manuellement</div>
+
+          <div class="mbox mbox-o">
+            <div class="mbl">Numéro du marchand</div>
+            <div class="mbn mbn-o">07 57 74 74 60</div>
+            <button class="mbcopy" onclick="copyNum()">📋 Copier</button>
+            <div class="mbname">EnglishPro Academy – Abidjan CI</div>
+          </div>
+
+          <ul class="psteps">
+            <li><div class="psn psn-o">1</div><div>Composez le <strong>#144#</strong> ou ouvrez l'app <strong>Orange Money</strong></div></li>
+            <li><div class="psn psn-o">2</div><div>Choisissez <strong>"Transfert"</strong> → <strong>"Vers un autre réseau"</strong></div></li>
+            <li><div class="psn psn-o">3</div><div>Numéro : <strong>0757747460</strong> — Montant : <strong>15 000 FCFA</strong></div></li>
+            <li><div class="psn psn-o">4</div><div>Motif : <strong id="orange-ref-note">EPA-[Prénom]-[Niveau]</strong></div></li>
+            <li><div class="psn psn-o">5</div><div>Validez avec votre code. Notez la <strong>référence SMS</strong></div></li>
+          </ul>
+
+          <div class="refbox">
+            <div class="refbox-title">📲 Référence de transaction Orange Money</div>
+            <input class="refinput" id="ref-orange" type="text" placeholder="Ex : TXN-OM-XXXXXXXX" oninput="checkRef('orange')"/>
+          </div>
+          <button class="bsub" id="cfbtn-orange" onclick="confirm3()" style="display:none;margin-top:.8rem;">✓ Confirmer mon paiement Orange Money</button>
+        </div>
+
+        <button class="bback" onclick="go2()">← Retour</button>
+        <p class="fnotice">🔒 Touch Point · Paiement 100% sécurisé · Accès immédiat après validation</p>
+      </div>
+
+      <!-- STEP 4 : Vérification -->
+      <div id="s4" style="display:none">
+        <div class="verif">
+          <div class="vspinner" id="vsp"></div>
+          <div class="vtitle" id="vtit">Vérification en cours…</div>
+          <p class="vsub" id="vsub">Nous vérifions votre paiement via Touch Point CI. Cela prend quelques secondes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCÈS -->
+    <div class="sscreen" id="sscreen" style="display:none">
+      <div class="sico">✓</div>
+      <h2>Paiement confirmé !</h2>
+      <p>Bienvenue chez EnglishPro Academy !<br/>Votre formation <strong id="slvl" style="color:var(--gold)"></strong> est maintenant accessible.</p>
+      <button class="bsub" onclick="launch()" style="margin-top:1.5rem;">Accéder à ma formation 🚀</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="lscreen" style="display:none">
+      <h2>Se connecter</h2>
+      <p class="msub">Accédez à votre espace de formation</p>
+      <div class="fg"><label>Email</label><input id="lem" type="email" placeholder="votre@email.com"/></div>
+      <div class="fg"><label>Mot de passe</label><input id="lpw" type="password" placeholder="Votre mot de passe"/></div>
+      <button class="bsub" onclick="doLogin()">Se connecter</button>
+      <p class="fnotice">Pas encore de compte ? <a href="#" style="color:var(--gold)" onclick="showReg()">S'inscrire</a></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     ESPACE FORMATION
+════════════════════════════════ -->
+<div id="app">
+  <div class="cnav">
+    <div class="logo">English<span>Pro</span> Academy</div>
+    <div class="uinfo">
+      <div class="uav" id="uav">K</div>
+      <div><div class="un" id="uname">Kouamé</div><div class="ul" id="ulvl">Niveau B1</div></div>
+      <button class="blog" onclick="logout()">Déconnexion</button>
+    </div>
+  </div>
+  <div class="cbody">
+    <div class="cside">
+      <div style="margin-bottom:1.5rem">
+        <div class="cstitle">Ma progression</div>
+        <div class="pbar-wrap">
+          <div class="pbar-lbl"><span>Module 1/6</span><span id="ppct">15%</span></div>
+          <div class="pbar"><div class="pfill" id="pfill" style="width:15%"></div></div>
+        </div>
+      </div>
+      <div style="margin-bottom:1.5rem">
+        <div class="cstitle">Navigation</div>
+        <div class="csi on" onclick="setTab('l')"><span class="csico">📖</span>Leçon en cours</div>
+        <div class="csi" onclick="setTab('q')"><span class="csico">✏️</span>Quiz & Exercices</div>
+        <div class="csi" onclick="setTab('c')"><span class="csico">💬</span>Chat avec le prof</div>
+      </div>
+      <div>
+        <div class="cstitle">Programme — 6 Semaines</div>
+        <div class="csi on"><span class="csico">1️⃣</span>Semaine 1 – Bases pro</div>
+        <div class="csi"><span class="csico">2️⃣</span>Semaine 2 – Emails<span class="cslk">🔒</span></div>
+        <div class="csi"><span class="csico">3️⃣</span>Semaine 3 – Réunions<span class="cslk">🔒</span></div>
+        <div class="csi"><span class="csico">4️⃣</span>Semaine 4 – Présentations<span class="cslk">🔒</span></div>
+        <div class="csi"><span class="csico">5️⃣</span>Semaine 5 – Négociation<span class="cslk">🔒</span></div>
+        <div class="csi"><span class="csico">6️⃣</span>Examen + Certificat<span class="cslk">🔒</span></div>
+      </div>
+    </div>
+    <div class="cmain">
+      <div class="ctabs">
+        <button class="ctab on" id="tl" onclick="setTab('l')">📖 Leçon</button>
+        <button class="ctab" id="tq" onclick="setTab('q')">✏️ Quiz</button>
+        <button class="ctab" id="tc" onclick="setTab('c')">💬 Mon Prof</button>
+      </div>
+
+      <!-- LEÇON -->
+      <div id="pl">
+        <div class="lhdr">
+          <div class="lbadge">Semaine 1 · Leçon 1</div>
+          <div class="ltitle" id="ltitle">Introducing Yourself Professionally</div>
+          <div class="lmeta"><span>⏱ 20 min</span><span>📊 Niveau <span id="llvl">B1</span></span><span>🏢 <span id="lsect">Tous secteurs</span></span></div>
+        </div>
+        <div class="lcont"><h3>🎯 Objectif de la leçon</h3><p>Apprenez à vous présenter professionnellement en anglais : nom, poste, entreprise, responsabilités. Essentiel dans tout contexte international.</p></div>
+        <div class="lcont">
+          <h3>📖 Expressions clés</h3>
+          <div class="exbox"><div class="en">"Good morning, my name is [Name], I work as a [Job Title] at [Company]."</div><div class="fr">Bonjour, je m'appelle [Nom], je travaille en tant que [Poste] chez [Entreprise].</div></div>
+          <div class="exbox"><div class="en">"I am responsible for [department / duties]."</div><div class="fr">Je suis responsable de [département / missions].</div></div>
+          <div class="exbox"><div class="en">"I have been in this role for [X years]."</div><div class="fr">J'occupe ce poste depuis [X ans].</div></div>
+          <div class="exbox"><div class="en">"It's a pleasure to meet you. I look forward to working with you."</div><div class="fr">C'est un plaisir. J'ai hâte de travailler avec vous.</div></div>
+        </div>
+        <div class="lcont"><h3>💡 Grammaire</h3><p><strong style="color:var(--gold)">Present Simple</strong> pour les faits permanents : "I work at…", "I manage a team of…"</p><p><strong style="color:var(--gold)">Present Perfect</strong> pour l'expérience : "I have been working here for 3 years."</p><p><strong style="color:var(--gold)">Politesse</strong> : Utilisez "Mr./Ms./Dr." + nom de famille en contexte formel.</p></div>
+        <button class="bsub" onclick="askProf()" style="max-width:320px;margin-top:.5rem;">📚 Demander plus d'explications au prof →</button>
+      </div>
+
+      <!-- QUIZ -->
+      <div id="pq" style="display:none">
+        <div class="lhdr"><div class="lbadge">Quiz · Leçon 1</div><div class="ltitle">Testez vos connaissances</div></div>
+        <div id="qcont"></div>
+      </div>
+
+      <!-- CHAT -->
+      <div id="pc" style="display:none">
+        <div class="lhdr"><div class="lbadge">Chat en direct</div><div class="ltitle">Votre professeur personnel</div><div class="lmeta"><span>🟢 Disponible maintenant</span></div></div>
+        <div class="chatbox">
+          <div class="msgs" id="msgs"></div>
+          <div class="cinput-wrap">
+            <textarea class="cinput" id="ci" placeholder="Posez votre question en français ou en anglais…" rows="1" onkeydown="ckd(event)"></textarea>
+            <button class="csend" id="csend" onclick="send()">➤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const MN = '0757747460';
+let lvl=null, lvlName=null, op=null, user={}, hist=[], qa=0;
+
+// BG letters
+const W=['Hello','Speak','Write','Read','Fluent','Grammar','Meeting','Report','Email','Professional','English','Learn','A1','A2','B1','B2','Excel','Present','Negotiate','Success'];
+const bgEl=document.getElementById('bg');
+function spwn(){
+  const e=document.createElement('div');
+  e.className='lt';e.textContent=W[Math.floor(Math.random()*W.length)];
+  e.style.left=Math.random()*100+'vw';e.style.fontSize=(1+Math.random()*2.5)+'rem';
+  const d=12+Math.random()*18;e.style.animationDuration=d+'s';
+  bgEl.appendChild(e);setTimeout(()=>e.remove(),d*1000);
+}
+for(let i=0;i<15;i++)setTimeout(spwn,i*700);
+setInterval(spwn,1200);
+
+// Modal
+function openModal(){
+  document.getElementById('fscreen').style.display='block';
+  document.getElementById('sscreen').style.display='none';
+  document.getElementById('lscreen').style.display='none';
+  ['s1','s2','s3','s4'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('s1').style.display='block';
+  document.getElementById('ov').classList.add('open');
+}
+function closeModal(){document.getElementById('ov').classList.remove('open');}
+function ovClick(e){if(e.target===document.getElementById('ov'))closeModal();}
+function showLogin(){document.getElementById('fscreen').style.display='none';document.getElementById('lscreen').style.display='block';}
+function showReg(){document.getElementById('lscreen').style.display='none';document.getElementById('fscreen').style.display='block';document.getElementById('s1').style.display='block';}
+
+// Navigation steps
+function go1(){showOnly('s1');}
+function go2(){
+  const fn=document.getElementById('fn').value.trim();
+  const em=document.getElementById('em').value.trim();
+  const ph=document.getElementById('ph').value.trim();
+  const pw=document.getElementById('pw').value;
+  if(!fn||!em||!ph||!pw){alert('Veuillez remplir tous les champs.');return;}
+  if(pw.length<8){alert('Le mot de passe doit contenir au moins 8 caractères.');return;}
+  user={firstName:fn,lastName:document.getElementById('ln').value.trim(),email:em,phone:ph,password:pw};
+  showOnly('s2');
+}
+function go3(){
+  if(!lvl){alert('Veuillez choisir un niveau.');return;}
+  user.level=lvl;user.levelName=lvlName;user.sector=document.getElementById('sec').value||'other';
+  document.getElementById('osl').textContent=lvl+' – '+lvlName;
+  const sn={banking:'Finance & Banque',health:'Santé & Médical',tech:'Informatique & Tech',trade:'Commerce & Vente',law:'Droit & Juridique',ngo:'ONG & International',education:'Éducation',other:'Général'};
+  document.getElementById('oss').textContent=sn[user.sector]||'Général';
+  // Mettre à jour les notes de référence
+  const ref='EPA-'+user.firstName+'-'+lvl;
+  document.getElementById('wave-ref-note').textContent=ref;
+  document.getElementById('orange-ref-note').textContent=ref;
+  showOnly('s3');
+}
+function showOnly(id){
+  ['s1','s2','s3','s4'].forEach(s=>document.getElementById(s).style.display='none');
+  document.getElementById(id).style.display='block';
+}
+function pickLvl(el,code,name){
+  document.querySelectorAll('.lpick').forEach(e=>e.classList.remove('sel'));
+  el.classList.add('sel');lvl=code;lvlName=name;
+}
+
+// ══ PAIEMENT V2 ══
+function pickOp(method){
+  op=method;
+  document.getElementById('wcard').className='opcard'+(method==='wave'?' selwave':'');
+  document.getElementById('ocard').className='opcard'+(method==='orange'?' selorange':'');
+  document.getElementById('instr-wave').className='pay-instr'+(method==='wave'?' show':'');
+  document.getElementById('instr-orange').className='pay-instr'+(method==='orange'?' show':'');
+}
+
+function openWaveApp(){
+  // Lien deep link Wave CI — ouvre l'app si installée
+  const amount=15000;
+  const note='EPA-'+user.firstName+'-'+lvl;
+  const url='wave://send?phone='+MN+'&amount='+amount+'&note='+encodeURIComponent(note);
+  window.location.href=url;
+  // Fallback après 1.5s si l'app n'est pas installée
+  setTimeout(()=>{
+    const fallback=confirm('Impossible d\'ouvrir l\'app Wave automatiquement. Voulez-vous être redirigé vers le site Wave ?');
+    if(fallback)window.open('https://wave.com','_blank');
+  },1500);
+}
+
+function openOrangeApp(){
+  const amount=15000;
+  const note='EPA-'+user.firstName+'-'+lvl;
+  // USSD Orange Money CI
+  const ussd='*144*1*'+MN+'*'+amount+'%23';
+  window.location.href='tel:'+ussd;
+  setTimeout(()=>{
+    const fallback=confirm('Impossible d\'ouvrir Orange Money automatiquement. Composez le #144# manuellement.');
+    // Pas de redirection, l'utilisateur suit les instructions manuelles
+  },1500);
+}
+
+function copyNum(){
+  navigator.clipboard.writeText(MN).then(()=>{
+    const btns=document.querySelectorAll('.mbcopy');
+    btns.forEach(b=>{b.textContent='✅ Copié!';setTimeout(()=>b.textContent='📋 Copier',2000);});
+  }).catch(()=>{
+    prompt('Copiez ce numéro :',MN);
+  });
+}
+
+function checkRef(method){
+  const val=document.getElementById('ref-'+method).value.trim();
+  document.getElementById('cfbtn-'+method).style.display=val.length>=5?'block':'none';
+}
+
+function confirm3(){
+  const refVal=op==='wave'?document.getElementById('ref-wave').value.trim():document.getElementById('ref-orange').value.trim();
+  user.ref=refVal;user.payMethod=op;
+  showOnly('s4');
+  // Simulation vérification Touch Point (3s)
+  setTimeout(()=>{
+    document.getElementById('vsp').style.display='none';
+    document.getElementById('vtit').textContent='✅ Paiement validé !';
+    document.getElementById('vsub').textContent='Votre paiement '+(op==='wave'?'Wave':'Orange Money')+' a été confirmé via Touch Point. Accès activé.';
+    // Sauvegarder compte
+    try{localStorage.setItem('epa_'+user.email,JSON.stringify({...user,password:btoa(user.password),paid:true,date:new Date().toISOString()}));}catch(e){}
+    setTimeout(()=>{
+      document.getElementById('fscreen').style.display='none';
+      document.getElementById('slvl').textContent=lvl+' – '+lvlName;
+      document.getElementById('sscreen').style.display='block';
+    },1200);
+  },3000);
+}
+
+// LOGIN
+function doLogin(){
+  const em=document.getElementById('lem').value.trim();
+  const pw=document.getElementById('lpw').value;
+  if(!em||!pw){alert('Veuillez remplir tous les champs.');return;}
+  try{
+    const stored=localStorage.getItem('epa_'+em);
+    if(stored){
+      const acc=JSON.parse(stored);
+      if(atob(acc.password)===pw&&acc.paid){
+        user=acc;lvl=acc.level;lvlName=acc.levelName;
+        document.getElementById('lscreen').style.display='none';
+        document.getElementById('slvl').textContent=acc.level+' – '+acc.levelName;
+        document.getElementById('sscreen').style.display='block';
+        return;
+      }
+    }
+  }catch(e){}
+  // Mode démo
+  user={firstName:'Apprenant',level:'B1',levelName:'Intermédiaire',sector:'other'};
+  lvl='B1';lvlName='Intermédiaire';
+  document.getElementById('lscreen').style.display='none';
+  document.getElementById('slvl').textContent='B1 – Intermédiaire';
+  document.getElementById('sscreen').style.display='block';
+}
+
+// LAUNCH COURSE
+function launch(){
+  closeModal();
+  document.getElementById('app').className='on';
+  const fn=user.firstName||'Apprenant';
+  document.getElementById('uname').textContent=fn+' '+(user.lastName||'');
+  document.getElementById('ulvl').textContent='Niveau '+(user.level||'B1');
+  document.getElementById('uav').textContent=fn[0].toUpperCase();
+  document.getElementById('llvl').textContent=user.level||'B1';
+  const tt={A1:'Greetings & First Introductions',A2:'Introducing Yourself at Work',B1:'Introducing Yourself Professionally',B2:'Executive Self-Introduction & Networking'};
+  document.getElementById('ltitle').textContent=tt[user.level]||'Professional English – Lesson 1';
+  initChat();initQuiz();
+}
+function logout(){document.getElementById('app').className='';user={};hist=[];}
+
+// TABS
+function setTab(t){
+  ['l','q','c'].forEach(x=>{
+    document.getElementById('p'+x).style.display=x===t?'block':'none';
+    document.getElementById('t'+x).className='ctab'+(x===t?' on':'');
+  });
+  document.querySelectorAll('.csi').forEach((el,i)=>{el.classList.toggle('on',i===['l','q','c'].indexOf(t));});
+}
+
+// QUIZ
+function initQuiz(){
+  const qs=[
+    {q:'How do you properly introduce yourself in a business meeting?',opts:['My name is John and I work in sales.','I am John. I do sales stuff.','John here. Sales.','Hey, I\'m John!'],ok:0},
+    {q:'Which sentence is correct in a formal email?',opts:['I hope this email find you well.','I hope this email finds you well.','Hope this finds you good.','This email is finding you well.'],ok:1},
+    {q:'"I look forward to hearing from you" signifie :',opts:['J\'attends votre réponse avec impatience.','Je vous regarde de loin.','J\'espère que vous m\'entendez.','Je vous écoute maintenant.'],ok:0},
+    {q:'Quelle phrase termine correctement une réunion professionnelle ?',opts:['Thank you all. Let\'s follow up by email.','OK bye everybody!','Meeting finished. Goodbye!','That\'s it, let\'s go!'],ok:0},
+  ];
+  document.getElementById('qcont').innerHTML=qs.map((q,i)=>`
+    <div class="qq" id="qq${i}">
+      <div class="qqt">${i+1}. ${q.q}</div>
+      <div class="qopts">${q.opts.map((o,j)=>`<button class="qopt" onclick="ans(${i},${j},${q.ok})">${o}</button>`).join('')}</div>
+    </div>`).join('');
+}
+function ans(qi,oi,ok){
+  const el=document.getElementById('qq'+qi);
+  el.querySelectorAll('.qopt').forEach((b,i)=>{b.disabled=true;if(i===ok)b.className='qopt ok';else if(i===oi&&oi!==ok)b.className='qopt no';});
+  qa++;
+  const p=Math.min(15+qa*5,100);
+  document.getElementById('pfill').style.width=p+'%';
+  document.getElementById('ppct').textContent=p+'%';
+}
+
+// CHAT IA
+function initChat(){
+  hist=[];
+  const sn={banking:'en Finance & Banque',health:'en Santé & Médical',tech:'en Informatique & Tech',trade:'en Commerce & Vente',law:'en Droit & Juridique',ngo:'dans les ONG & Organisations Internationales',education:'en Éducation',other:'dans un contexte professionnel général'};
+  const ctx=sn[user.sector||'other']||'dans un contexte professionnel';
+  addMsg('prof','Bonjour **'+(user.firstName||'')+'** ! 👋 Je suis Sarah Mitchell, votre professeure d\'anglais. Je suis spécialisée pour vous accompagner **'+ctx+'** au niveau **'+(user.level||'B1')+'**.\n\nPosez vos questions en français ou en anglais — je suis là 24h/24 !','Sarah Mitchell – Professeure');
+}
+function addMsg(role,text,name=''){
+  const msgs=document.getElementById('msgs');
+  const div=document.createElement('div');
+  div.className='msg'+(role==='user'?' me':'');
+  const html=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  div.innerHTML=`<div class="mav ${role==='user'?'u':'p'}">${role==='user'?(user.firstName||'?')[0].toUpperCase():'👩‍🏫'}</div><div>${name?`<div class="mname">${name}</div>`:''}<div class="mbub">${html}</div></div>`;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function showTyp(){
+  const msgs=document.getElementById('msgs');
+  const d=document.createElement('div');d.className='msg';d.id='typ';
+  d.innerHTML=`<div class="mav p">👩‍🏫</div><div><div class="mbub"><div style="display:flex;gap:4px;padding:.2rem 0"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div></div>`;
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+function rmTyp(){const t=document.getElementById('typ');if(t)t.remove();}
+
+async function send(){
+  const ci=document.getElementById('ci');
+  const msg=ci.value.trim();if(!msg)return;
+  ci.value='';document.getElementById('csend').disabled=true;
+  addMsg('user',msg);hist.push({role:'user',content:msg});
+  showTyp();
+  const sn={banking:'Finance & Banque',health:'Santé & Médical',tech:'Informatique & Tech',trade:'Commerce & Vente',law:'Droit & Juridique',ngo:'ONG & Organisations Internationales',education:'Éducation',other:'Professionnel général'};
+  const sp=`Tu es Sarah Mitchell, professeure d'anglais expert sur EnglishPro Academy (Abidjan, CI). Tu enseignes à des PROFESSIONNELS.
+PROFIL: Prénom=${user.firstName||'Apprenant'}, Niveau=${user.level||'B1'}, Secteur=${sn[user.sector||'other']||'Général'}
+RÔLE: Cours d'anglais pro de haute qualité. Exemples concrets du secteur. Corriger les erreurs avec bienveillance. Grammaire, vocabulaire, expressions idiomatiques. Simuler situations réelles (emails, réunions, négociations).
+RÈGLES: Répondre en français si question en français. Toujours inclure exemples anglais + traduction. Mettre en gras les mots clés avec **mot**. Être encourageant et précis. Proposer exercices pratiques.`;
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:sp,messages:hist})
+    });
+    const data=await r.json();rmTyp();
+    const reply=data.content&&data.content[0]?data.content[0].text:'Désolée, réessayez.';
+    hist.push({role:'assistant',content:reply});
+    addMsg('prof',reply,'Sarah Mitchell – Professeure');
+  }catch(e){rmTyp();addMsg('prof','Une erreur est survenue. Vérifiez votre connexion. 🙏','Sarah Mitchell');}
+  document.getElementById('csend').disabled=false;
+}
+function ckd(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function askProf(){
+  setTab('c');
+  const si=document.getElementById('ci');
+  si.value='Donne-moi une leçon approfondie sur comment me présenter professionnellement en anglais, avec des exemples concrets pour mon secteur.';
+  send();
+}
+</script>
+</body>
+</html>
